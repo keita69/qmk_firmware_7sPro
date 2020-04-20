@@ -24,6 +24,9 @@ enum layer_number {
   _ADJUST,
 };
 
+#define GUI_RT LGUI(KC_RGHT)       // Windows+Right
+#define GUI_LT LGUI(KC_LEFT)       // Windows+Left
+
 enum custom_keycodes {
   RGB_RST = SAFE_RANGE,
 
@@ -51,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, MO(_FN),
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-               KC_LALT, KC_LGUI,           _LOWER,  KC_DEL,     KC_BSPC,  _RAISE,          KC_RGUI, KC_RALT 
+               GUI_LT,  KC_LALT,           _LOWER,  KC_DEL,     KC_BSPC,  _RAISE,          KC_RGUI,  GUI_RT 
           //`---------------------------------------------|   |--------------------------------------------'
   ),
 
