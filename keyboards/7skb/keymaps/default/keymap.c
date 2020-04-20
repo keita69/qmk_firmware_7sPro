@@ -24,8 +24,8 @@ enum layer_number {
   _ADJUST,
 };
 
-#define GUI_RT LGUI(KC_RGHT)       // Windows+Right
 #define GUI_LT LGUI(KC_LEFT)       // Windows+Left
+#define GUI_RT LGUI(KC_RGHT)       // Windows+Right
 
 enum custom_keycodes {
   RGB_RST = SAFE_RANGE,
