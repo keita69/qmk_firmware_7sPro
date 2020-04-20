@@ -1,8 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "keymap_jp.h"
 
-static bool lower_pressed = false; 
-static bool raise_pressed = false; 
 
 #ifdef RGBLIGHT_ENABLE
 //Following line allows macro to read current RGB settings
@@ -17,25 +14,12 @@ extern uint8_t is_master;
 // entirely and just use numbers.
 enum layer_number {
   _QWERTY = 0,
-  _FLOCK,
   _FN,
-  _LOWER,
-  _RAISE,
   _ADJUST,
 };
 
 enum custom_keycodes {
   RGB_RST = SAFE_RANGE
-};
-
-enum tapdances{
-  TD_ESFL = 0,
-  TD_ESQW,
-};
-
-qk_tap_dance_action_t tap_dance_actions[] = {
-  [TD_ESFL] = ACTION_TAP_DANCE_DUAL_ROLE(KC_ESC, _FLOCK),
-  [TD_ESQW] = ACTION_TAP_DANCE_DUAL_ROLE(KC_ESC, _QWERTY),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -49,21 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,        KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT, MO(_FN),
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-               KC_LALT, KC_LGUI,           _LOWER,  KC_DEL,     KC_BSPC,  _RAISE,          KC_RGUI, KC_RALT 
-          //`---------------------------------------------|   |--------------------------------------------'
-  ),
-
-  [_FLOCK] = LAYOUT(
-  //,-----------------------------------------------------|   |--------------------------------------------------------------------------------.
-  TD(TD_ESQW),   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12, _______, _______,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, _______, _______,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, _______,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, _______,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-               _______, _______, _______, _______,              _______, _______,          _______, _______ 
+               KC_LALT, KC_LGUI,  KC_SPC,  KC_SPC,               KC_SPC,  KC_SPC,          KC_RGUI, KC_RALT 
           //`---------------------------------------------|   |--------------------------------------------'
   ),
 
@@ -81,34 +51,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
           //`---------------------------------------------|   |--------------------------------------------'
   ),
 
-  [_LOWER] = LAYOUT(
-  //,-----------------------------------------------------|   |--------------------------------------------------------------------------------.
-      _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------+--------|
-      JP_QUOT, JP_EXLM, JP_QUES, JP_LBRC, JP_RBRC, JP_TILD,       KC_P6,   KC_P7,   KC_P8,   KC_P9, JP_ASTR, JP_SLSH, _______, KC_BSPC,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------|
-      JP_QUOT, JP_HASH,  JP_DQT, JP_LPRN, JP_RPRN,   JP_AT,     XXXXXXX,   KC_P4,   KC_P5,   KC_P6, JP_MINS,  JP_EQL, _______,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-      JP_CIRC, JP_PERC, JP_AMPR, JP_SCLN, JP_COLN, JP_PIPE,       KC_P0,   KC_P1,   KC_P2,   KC_P3, JP_PLUS, _______, _______,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-               _______, _______,MO(_LOWER), _______,            _______, MO(_RAISE),        JP_DOT, _______ 
-          //`---------------------------------------------|   |--------------------------------------------'
-  ),
-
-  [_RAISE] = LAYOUT(
-  //,-----------------------------------------------------|   |--------------------------------------------------------------------------------.
-      _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------+--------|
-       KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, KC_PGUP, XXXXXXX, _______, KC_BSPC,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------|
-LCTL_T(KC_F11),XXXXXXX,   KC_F2,   KC_F3,   KC_F4,   KC_F5,     XXXXXXX, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX, XXXXXXX, _______,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-SFT_T(KC_F12),   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, _______, _______,
-  //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-               _______, _______, _______, _______,              _______, _______,          _______, _______ 
-          //`---------------------------------------------|   |--------------------------------------------'
-  ),
-
   [_ADJUST] = LAYOUT( /* Base */
   //,-----------------------------------------------------|   |--------------------------------------------------------------------------------.
   TG(_ADJUST), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   RESET,
@@ -123,6 +65,7 @@ SFT_T(KC_F12),   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,     XXXXXXX, XXXXXXX
           //`---------------------------------------------|   |--------------------------------------------'
   )
 };
+
 
 //A description for expressing the layer position in LED mode.
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -163,57 +106,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
         break;
     #endif
-    case _QWERTY:
-      if (record->event.pressed) {
-        print("mode just switched to qwerty and this is a huge string\n");
-        set_single_persistent_default_layer(_QWERTY);
-      }
-      return false;
-      break;
-    case _LOWER:
-      if (record->event.pressed) {
-        lower_pressed = true;
-
-        layer_on(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-
-        // http://okapies.hateblo.jp/entry/2019/02/02/133953
-        if (lower_pressed) {
-          register_code(KC_SPC);
-          unregister_code(KC_SPC);
-        }
-        lower_pressed = true;
-      }
- 
-      return false;
-      break;
-    case _RAISE:
-      if (record->event.pressed) {
-        layer_on(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      }
-      return false;
-      break;
-    case _ADJUST:
-      if (record->event.pressed) {
-        layer_on(_ADJUST);
-      } else {
-        layer_off(_ADJUST);
-      }
-      return false;
-      break;
     default:
-      if (record->event.pressed) {
-        // reset the flag
-        lower_pressed = false;
-        raise_pressed = false;
-      }
       result = true;
       break;
   }
