@@ -25,7 +25,9 @@ enum layer_number {
 };
 
 enum custom_keycodes {
-  RGB_RST = SAFE_RANGE
+  RGB_RST = SAFE_RANGE,
+
+  ESCx2   // ESC x2
 };
 
 enum tapdances{
@@ -41,7 +43,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
   //,-----------------------------------------------------|   |--------------------------------------------------------------------------------.
-       KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,        KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSLS,  KC_GRV,
+       ESCx2,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,        KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSLS,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------+--------|
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC,KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------|
@@ -205,6 +207,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_on(_ADJUST);
       } else {
         layer_off(_ADJUST);
+      }
+      return false;
+      break;
+    case ESCx2:
+      if (record->event.pressed) {
+        // when keycode ESC is pressed two times 
+        // https://qiita.com/chesscommands/items/ce2883ad0a0c6c27c8de#ss_tap
+        // https://github.com/qmk/qmk_firmware/blob/6590f3c81155f5d5cfb59c5b8a28610d6f3207d0/quantum/send_string_keycodes.h
+        SEND_STRING(SS_TAP(X_ESCAPE));
+      } else {
+        // when keycode ESC is pressed two times 
+        SEND_STRING(SS_TAP(X_ESCAPE));
       }
       return false;
       break;
