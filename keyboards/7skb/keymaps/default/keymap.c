@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "keymap_jp.h"
 
 static bool lower_pressed = false; 
 static bool raise_pressed = false; 
