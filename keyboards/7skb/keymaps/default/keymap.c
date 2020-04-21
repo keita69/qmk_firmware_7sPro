@@ -28,6 +28,8 @@ enum layer_number {
 #define GUI_RT LGUI(KC_RGHT)       // Windows+Right
 #define CL_G_R LCTL(LGUI(KC_RGHT)) // Ctrl+Windows+Right
 #define CL_G_L LCTL(LGUI(KC_LEFT)) // Ctrl+Windows+Left
+#define GUI_UP LGUI(KC_UP)         // Windows+Up
+#define GUI_DW LGUI(KC_DOWN)       // Windows+Down
 
 enum custom_keycodes {
   RGB_RST = SAFE_RANGE,
@@ -104,15 +106,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT(
   //,-----------------------------------------------------|   |--------------------------------------------------------------------------------.
-      _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
+        ESCx2,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------+--------|
-       KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     XXXXXXX, XXXXXXX,   KC_UP, XXXXXXX, KC_PGUP, XXXXXXX, _______, KC_BSPC,
+       KC_TAB, _______, _______, _______, _______, _______,     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, KC_BTN2, _______,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------|
-LCTL_T(KC_F11),XXXXXXX,   KC_F2,   KC_F3,   KC_F4,   KC_F5,     XXXXXXX, KC_LEFT, KC_DOWN,KC_RIGHT, XXXXXXX, XXXXXXX, _______,
+     KC_LCTRL, _______, _______, _______, _______, _______,    KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_ENT , KC_APP , _______,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-SFT_T(KC_F12),   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGDN, _______, _______,
+      KC_LSFT, _______, _______, _______, _______, _______,     KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_HOME,  KC_END, _______,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-               _______, _______, _______, _______,              _______, _______,          _______, _______ 
+                GUI_DW, _______,  _LOWER,  KC_SPC,              KC_BSPC,  _RAISE,          _______,  GUI_UP 
           //`---------------------------------------------|   |--------------------------------------------'
   ),
 
