@@ -32,6 +32,7 @@ enum custom_keycodes {
 #define GUI_UP LGUI(KC_UP)         // Windows+Up
 #define GUI_DW LGUI(KC_DOWN)       // Windows+Down
 #define ZEN_HN LALT(KC_GRV)        // ALT+`
+#define CTLSFM LCTL(LSFT(KC_M))    // Ctrl+Shift+M
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
@@ -70,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------|
       KC_LCTL,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_APP,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,  CTLSFM, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-               CL_G_L, XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX,           XXXXXXX,   CL_G_R
+                CL_G_L, XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX,          XXXXXXX,  CL_G_R
           //`---------------------------------------------|   |--------------------------------------------'
   ),
 
