@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,  CTLSFM, XXXXXXX, XXXXXXX, KC_PSLS, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-                CL_G_L, XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX,          XXXXXXX,  CL_G_R
+                CL_G_L, XXXXXXX, XXXXXXX,  KC_DEL,              KC_BSPC, XXXXXXX,          XXXXXXX,  CL_G_R
           //`---------------------------------------------|   |--------------------------------------------'
   ),
 
@@ -87,7 +87,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_HOME,  KC_END, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-                GUI_DW, XXXXXXX, XXXXXXX, XXXXXXX,              XXXXXXX, XXXXXXX,          XXXXXXX,  GUI_UP 
+                GUI_DW, XXXXXXX, XXXXXXX,  KC_DEL,              KC_BSPC, XXXXXXX,          XXXXXXX,  GUI_UP 
           //`---------------------------------------------|   |--------------------------------------------'
   ),
 
