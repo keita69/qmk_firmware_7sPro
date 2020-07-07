@@ -40,6 +40,9 @@ enum custom_keycodes {
 #define TBSC_5 LGUI(KC_5)          // Windows+5 (Task Bar Short Cut 5)
 #define TBSC_6 LGUI(KC_6)          // Windows+6 (Task Bar Short Cut 6)
 #define TBSC_7 LGUI(KC_7)          // Windows+7 (Task Bar Short Cut 7)
+#define TBSC_8 LGUI(KC_8)          // Windows+8 (Task Bar Short Cut 8)
+#define TBSC_9 LGUI(KC_9)          // Windows+9 (Task Bar Short Cut 9)
+#define TBSC_0 LGUI(KC_0)          // Windows+0 (Task Bar Short Cut 0)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
@@ -88,11 +91,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------|   |--------------------------------------------------------------------------------.
        KC_ESC,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------+--------|
-      KC_TAB , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, KC_BTN2, XXXXXXX, KC_BSPC,
+      KC_TAB ,  TBSC_6,  TBSC_7,  TBSC_8,  TBSC_9,  TBSC_0,     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_BTN1, KC_BTN2, XXXXXXX, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------+--------|
       KC_LCTL,  TBSC_1,  TBSC_2,  TBSC_3,  TBSC_4,  TBSC_5,     KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT,  KC_ENT,  KC_APP,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-      KC_LSFT,  TBSC_6,  TBSC_7,    KC_C,    KC_V, XXXXXXX,     KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_HOME,  KC_END, XXXXXXX,
+      KC_LSFT, XXXXXXX, XXXXXXX,    KC_C,    KC_V, XXXXXXX,     KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_HOME,  KC_END, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
                 GUI_DW, XXXXXXX, XXXXXXX,  KC_DEL,              KC_BSPC, XXXXXXX,          XXXXXXX,  GUI_UP 
           //`---------------------------------------------|   |--------------------------------------------'
