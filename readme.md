@@ -1,3 +1,17 @@
+# git submodule update
+```
+git submodule update --init --recursive
+```
+
+```
+このエラーが発生した場合は、submodule が存在しない。
+tmk_core/protocol/lufa.mk:14: lib/lufa/LUFA/makefile: No such file or directory
+```
+
+
+# QMK環境構築
+https://zenn.dev/diwamoto/articles/1943345edce519
+
 # QMK コンパイル（Promicro書き込み）
 ```
 make 7skb:default:avrdude
